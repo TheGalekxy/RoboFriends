@@ -1,0 +1,13 @@
+#navbar {
+    font-weight: 400;
+    margin-top: 25px;
+    max-width: 2400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0px auto;
+    float: left;
+    padding: 1em;
+}
