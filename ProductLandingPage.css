@@ -55,12 +55,11 @@ nav li {
 
 #features {
     top: 0px;
-    margin-top: 112px;
+    margin-top: 100px;
     padding: 0px 0px 0px 0px;
     display: flex;
     align-items: center;
     text-align: center;
-    
 }
 
 #pricing {
