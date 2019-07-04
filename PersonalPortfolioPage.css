@@ -102,25 +102,21 @@ p {
     width: 100%;
     height: 100vh;
     background-color: peru;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: px;
-    grid-gap: 4rem;
-    width: 100%;
-    margin: 0 auto;
     text-align: center;
+
 }
 
-#projects-header {
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;
+#project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-auto-rows: px;
+    grid-gap: 4rem;
+    margin: 0 auto;
 }
 
 #social-media {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -131,20 +127,31 @@ p {
 
 .profile-link {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     width: 100%;
     max-width: 980px;
-    flex-wrap: wrap;
-}
+    }
 
 .social-tile {
-    height: calc(100% - 6.8rem);
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 2rem;
+    border-radius: 2px;
+    max-width: 200px;
+    max-height: 200px;
+    height: auto;
     width: 100%;
-    object-fit: cover;
 }
 
 footer {
     background-color: black;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#social-header {
+    background-color: darkolivegreen;
     text-align: center;
-    padding: 2rem;
 }
