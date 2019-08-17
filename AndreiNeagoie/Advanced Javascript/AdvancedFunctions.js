@@ -33,3 +33,5 @@
 
 const multiply = (a, b) => a * b;
 const curriedMultiple = (a) (b) => a * b;
+curriedMultiple(3); // sets a as 3
+curriedMultiple(3)(4)
