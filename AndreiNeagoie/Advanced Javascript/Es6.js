@@ -80,3 +80,19 @@ const greetingBest = `Hello ${name} you seem to be ${age-10}. What a lovely ${pe
 function greet(name='', age=30, pet='cat') {
     return `Hello ${name} you seem to be ${age-10}. What a lovely ${pet} you have!`;
 }
+
+// Symbol
+
+let sym1 = Symbol();
+let sym2 = Symbol('foo');
+let sym3 = Symbol('foo');
+
+// symbols create a completely unique type. Therefore sym2 /= sym3. Will return "false".
+
+// Arrow Functions
+
+function add(a, b) {
+    return a + b;
+}
+
+const add = (a, b) => a + b;
