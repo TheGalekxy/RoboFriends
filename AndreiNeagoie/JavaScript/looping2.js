@@ -6,4 +6,6 @@ var todos = [
     "eat healthy"
 ];
 
-for (var i = 0; i < todos.length; i++)
+for (var i = 0; i < todos.length; i++) {
+    
+}
