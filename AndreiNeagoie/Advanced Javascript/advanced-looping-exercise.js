@@ -33,19 +33,34 @@ const array2 = ['a', 3, 4, 2] // should return 4
 const array3 = [] // should return 0
 
 function biggestNumberInArray(arr) {
-    return Math.max(array)
+  for (number of array) {
+    console.log(Math.max(...array))
+  }
 }
 
 biggestNumberInArray()
 
 function biggestNumberInArray2(arr) {
-
+  for ()
 }
+
+
+  for (let i = 0; i < array2.length; i++) {
+    const numberArray = [];
+    if (array2[i] > 0) {
+      console.log(numberArray.push(array2[i]))
+    }
+  }
+}
+
+
+biggestNumberInArray2()
 
 function biggestNumberInArray3(arr) {
-
+  return arr.length
 }
 
+biggestNumberInArray3()
 
 // Question #2:
 // Write a function checkBasket() that lets you know if the item is in the basket or not
