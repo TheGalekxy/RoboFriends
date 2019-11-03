@@ -1,4 +1,4 @@
-var todos = [
+-var todos = [
     "clean room",
     "brush teeth",
     "exercise",
