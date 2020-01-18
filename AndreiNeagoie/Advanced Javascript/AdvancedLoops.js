@@ -6,7 +6,7 @@ for (let i = 0; i < basket.length; i++) {
     console.log(basket[i]);
 }
 
-// 2
+// 2  NEW IN ES 5
 basket.forEach(item => {
     console.log(item);
 })
@@ -15,7 +15,7 @@ basket.forEach(item => {
 // Iterating over the array - simply means going one by one through an item(array) and look at it's items
 // Iterating can be done in javascript with "iterables", 
 // used for Arrays and Strings as they are considered iterables
-for (item of basket) {
+for (item of basket) { //"item" can be anything, just a variable name
     console.log(item);
 }
 
