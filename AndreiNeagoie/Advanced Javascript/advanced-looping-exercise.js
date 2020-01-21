@@ -41,23 +41,25 @@ function biggestNumberInArray(arr) {
 biggestNumberInArray()
 
 function biggestNumberInArray2(arr) {
-  for ()
-}
-
-
-  for (let i = 0; i < array2.length; i++) {
-    const numberArray = [];
-    if (array2[i] > 0) {
-      console.log(numberArray.push(array2[i]))
+  highest = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (highest < arr[i]) {
+      highest = arr[i]
     }
   }
+  console.log(highest)
 }
-
 
 biggestNumberInArray2()
 
 function biggestNumberInArray3(arr) {
-  return arr.length
+  highest = 0
+  arr.forEach(item => {
+    if (highest < item) {
+      highest = item;
+    }
+})
+  console.log(highest)
 }
 
 biggestNumberInArray3()
@@ -70,6 +72,20 @@ amazonBasket = {
   floss: 100
 }
 
-function checkBasket(basket, lookingFor) {
+function checkBasket() {
+  for (item in amazonBasket) {
+    if (amazonBasket.hasOwnProperty(item)) {
+    console.log(`We have ${item}`);                         //WOOOOOOOOOO, not an exact solution but pretty good. I'm learning :)
+    }
+  }
+}
 
+
+function checkBasket(basket, lookingFor) {
+  for (item in basket) {
+    if (basket.hasOwnProperty(lookingFor)) {
+    console.log(`We have ${lookingFor}`);                        // Here is a better solution
+    }
+    else return 'That is not in your basket'
+  }
 }
