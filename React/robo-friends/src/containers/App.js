@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
+import ErrorBoundary from '../components/ErrorBoundary';
 import './App.css'
 
 class App extends Component {           // In order to use state, we have to got back to the original way to create React Components
@@ -37,7 +38,9 @@ class App extends Component {           // In order to use state, we have to got
                     <h1 className="f1">RoboFriends</h1>
                     <SearchBox searchChange={this.onSearchChange} /> {/* Because STATE(?) is an object, we have to use 'this' */}      {/* In order to get this to function we need to share information between the CardList & Searchbox */}
                     <Scroll>
-                        <CardList  robots={filteredRobots}/> {/* In order to do this, React has "State". This components are considered "Pure Components" because they are "Deterministic" and are passed down props. THey don't need to know anything other than the fact that are receiving something and returning something */}
+                        <ErrorBoundary>
+                            <CardList  robots={filteredRobots}/> {/* In order to do this, React has "State". This components are considered "Pure Components" because they are "Deterministic" and are passed down props. THey don't need to know anything other than the fact that are receiving something and returning something */}
+                        </ErrorBoundary>
                     </Scroll>
                 </div>              //^^^ robots can now be accessed through this syntax
             );
