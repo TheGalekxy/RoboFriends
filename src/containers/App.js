@@ -31,7 +31,7 @@ class App extends Component {           // In order to use state, we have to got
             return robot.name.toLowerCase().includes(searchfield.toLowerCase())    // If the name of the robots (in lower case or uppercase) include what is in the search field (in lower or upper case) then return the robots that return true to this
         })                                     // ^^ this is not referring to the app because the input is occuring in a different scope(?)
         if (robots.length === 0) {
-            return <h1> Loading... </h1>
+            return <h1> Loading.... </h1>
         } else {
             return (
                 <div className="tc"> {/* Centers Everything */}
