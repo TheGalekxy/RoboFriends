@@ -1,42 +1,61 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import ErrorBoundary from '../components/ErrorBoundary';
-import './App.css'
+import './App.css';
+
+import { setSearchField, requestRobots } from '../actions.js';
+
+const mapStateToProps = state => {
+    return {
+        searchField: state.searchRobots.searchField,
+        robots: state.requestRobots.robots,
+        isPending: state.requestRobots.isPending,
+        error: state.requestRobots.error
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+   return {
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    onRequestRobots: () => dispatch(requestRobots())
+   } 
+}
 
 class App extends Component {           // In order to use state, we have to got back to the original way to create React Components
-    constructor() {
-        super()                 // To use "this" we need to add "super" which calls the contructor of component
-        this.state = {
-            robots: [],          
-            searchfield: '',         // this is what we want our state to be
-        }
-    }                        // To add state, just use a "constructor"
+    // constructor() {
+    //     super()                 // To use "this" we need to add "super" which calls the contructor of component
+    //     this.state = {
+    //         robots: [] //,          
+    //         // searchfield: '',         // this is what we want our state to be
+    //     }
+    // }                        // To add state, just use a "constructor"
     
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
-        .then(users => this.setState({ robots: users}));
+        this.props.onRequestRobots()
+        // fetch('https://jsonplaceholder.typicode.com/users')
+        //     .then(response => response.json())
+        // .then(users => this.setState({ robots: users}));
     }
 
-    onSearchChange = (event) => {     // ******any time you make your own methods on a component, use this syntax*****
-        this.setState({ searchfield: event.target.value}) // any time you want to change state, you must put this method
+    // onSearchChange = (event) => {     // ******any time you make your own methods on a component, use this syntax*****
+    //     this.setState({ searchfield: event.target.value}) // any time you want to change state, you must put this method
         
-    }
+    // }
 
     render() {
-        const { robots, searchfield } = this.state;
+        const { searchField, onSearchChange, robots, isPending } = this.props;
         const filteredRobots = robots.filter(robot =>{
-            return robot.name.toLowerCase().includes(searchfield.toLowerCase())    // If the name of the robots (in lower case or uppercase) include what is in the search field (in lower or upper case) then return the robots that return true to this
+            return robot.name.toLowerCase().includes(searchField.toLowerCase())    // If the name of the robots (in lower case or uppercase) include what is in the search field (in lower or upper case) then return the robots that return true to this
         })                                     // ^^ this is not referring to the app because the input is occuring in a different scope(?)
-        if (robots.length === 0) {
-            return <h1> Loading.... </h1>
-        } else {
-            return (
+        return isPending ?
+             <h1> Loading.... </h1> :
+         (
                 <div className="tc"> {/* Centers Everything */}
                     <h1 className="f1">RoboFriends</h1>
-                    <SearchBox searchChange={this.onSearchChange} /> {/* Because STATE(?) is an object, we have to use 'this' */}      {/* In order to get this to function we need to share information between the CardList & Searchbox */}
+                    <SearchBox searchChange={onSearchChange} /> {/* Because STATE(?) is an object, we have to use 'this' */}      {/* In order to get this to function we need to share information between the CardList & Searchbox */}
                     <Scroll>
                         <ErrorBoundary>
                             <CardList  robots={filteredRobots}/> {/* In order to do this, React has "State". This components are considered "Pure Components" because they are "Deterministic" and are passed down props. THey don't need to know anything other than the fact that are receiving something and returning something */}
@@ -45,7 +64,7 @@ class App extends Component {           // In order to use state, we have to got
                 </div>              //^^^ robots can now be accessed through this syntax
             );
         }
-    }
+    
 }
 
 // render() {
@@ -70,7 +89,7 @@ class App extends Component {           // In order to use state, we have to got
 
 // ^^^^^^^^^^^^^^ Cleaner Code (but more complicated to me) ^^^^^^^^^
 
-export default App
+export default connect(mapStateToProps, mapDispatchToProps)(App); // connect is a higher order function, - a function that returns another function.
 
 // "State" simple means the description of you App. State is simply an object, an object that describes your application. And this state is the robots and whatever is entered in the seach box
 // This state is able to change, we are able to change the value of the search box and the robots.
